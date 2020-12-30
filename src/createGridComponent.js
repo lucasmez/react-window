@@ -714,11 +714,11 @@ export default function createGridComponent({
       const overscanBackward =
         !isScrolling || verticalScrollDirection === 'backward'
           ? Math.max(1, overscanCountResolved)
-          : 1;
+          : 5;
       const overscanForward =
         !isScrolling || verticalScrollDirection === 'forward'
           ? Math.max(1, overscanCountResolved)
-          : 1;
+          : 5;
 
       return [
         Math.max(0, startIndex - overscanBackward),
