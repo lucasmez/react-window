@@ -711,14 +711,11 @@ export default function createGridComponent({
 
       // Overscan by one item in each direction so that tab/focus works.
       // If there isn't at least one extra item, tab loops back around.
-      const overscanBackward =
-        !isScrolling || verticalScrollDirection === 'backward'
-          ? Math.max(1, overscanCountResolved)
-          : 5;
+      const overscanBackward = Math.max(1, overscanCountResolved)
       const overscanForward =
         !isScrolling || verticalScrollDirection === 'forward'
           ? Math.max(1, overscanCountResolved)
-          : 5;
+          : 1;
 
       return [
         Math.max(0, startIndex - overscanBackward),
