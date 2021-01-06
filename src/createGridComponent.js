@@ -63,7 +63,7 @@ type InnerProps = {|
 |};
 
 export type Props<T> = {|
-  children: RenderComponent<T>,
+  children: any,//RenderComponent<T>,
   className?: string,
   columnCount: number,
   columnWidth: itemSize,
@@ -435,11 +435,11 @@ export default function createGridComponent({
             if (!key) continue;
             
             items.push(
-              createElement(children, {
+              children({
                 columnIndex,
                 data: itemData,
                 isScrolling: useIsScrolling ? isScrolling : undefined,
-                key,
+                itemKey: key,
                 rowIndex,
                 style: this._getItemStyle(rowIndex, columnIndex),
               })
