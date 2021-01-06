@@ -403,7 +403,7 @@ export default function createGridComponent({
         innerElementType,
         innerTagName,
         itemData,
-        itemKey = defaultItemKey,
+        itemKey,
         outerElementType,
         outerTagName,
         rowCount,
@@ -431,12 +431,15 @@ export default function createGridComponent({
             columnIndex <= columnStopIndex;
             columnIndex++
           ) {
+            const key = itemKey({ columnIndex, data: itemData, rowIndex });
+            if (!key) continue;
+            
             items.push(
               createElement(children, {
                 columnIndex,
                 data: itemData,
                 isScrolling: useIsScrolling ? isScrolling : undefined,
-                key: itemKey({ columnIndex, data: itemData, rowIndex }),
+                key,
                 rowIndex,
                 style: this._getItemStyle(rowIndex, columnIndex),
               })
